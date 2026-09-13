@@ -1,0 +1,85 @@
+/* ==========================================================================
+   SUBTLE EDITORIAL ANIMATIONS & GLOWS
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes signalPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+@keyframes packetFlow {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes ambientDrift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(15px, -15px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-signal {
+  animation: signalPulse 2.5s ease-in-out infinite;
+}
+
+.animate-packet {
+  stroke-dasharray: 4, 4;
+  animation: packetFlow 1.2s linear infinite;
+}
+
+.animate-cursor {
+  animation: cursorBlink 1s step-start infinite;
+}
+
+.animate-ambient {
+  animation: ambientDrift 14s ease-in-out infinite;
+}
+
+/* Subtle line glow for Dark mode */
+html[data-theme='dark'] .glow-burgundy {
+  box-shadow: 0 0 25px rgba(110, 36, 53, 0.25);
+}
+
+html[data-theme='light'] .glow-burgundy {
+  box-shadow: 0 4px 15px rgba(63, 17, 29, 0.08);
+}

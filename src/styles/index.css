@@ -1,0 +1,523 @@
+/* ==========================================================================
+   SALMA EL MOUNTASSIR — LUXURY EDITORIAL & TECH DESIGN SYSTEM
+   Dark Burgundy / Wine + Editorial Tech Identity
+   ========================================================================== */
+
+:root {
+  /* Common typography tokens */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-editorial: 'Syne', sans-serif;
+
+  /* Spacing & Radii (refined, subtle, architectural - avoid bubbly rounded corners) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+
+  --transition-theme: background-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
+                      border-color 400ms cubic-bezier(0.16, 1, 0.3, 1),
+                      color 300ms ease;
+  --transition-smooth: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 150ms ease;
+
+  --max-width: 1280px;
+}
+
+/* ==========================================================================
+   DARK MODE (Default)
+   #0D0B0C / #171214 / #4A1824 / #6E2435 / #F2E9E4 / #A89B9F
+   ========================================================================== */
+html[data-theme='dark'],
+:root:not([data-theme='light']) {
+  --bg-primary: #0D0B0C;
+  --bg-secondary: #171214;
+  --bg-surface: #1E1619;
+  --bg-surface-elevated: #261B20;
+  --bg-card: rgba(23, 18, 20, 0.75);
+  --bg-card-hover: rgba(38, 27, 32, 0.9);
+  --bg-glass: rgba(13, 11, 12, 0.85);
+
+  --burgundy: #4A1824;
+  --accent: #6E2435;
+  --accent-light: #9B3B52;
+  --accent-glow: rgba(110, 36, 53, 0.35);
+  --accent-soft: rgba(74, 24, 36, 0.35);
+  --accent-subtle: rgba(110, 36, 53, 0.15);
+
+  --text-primary: #F2E9E4;
+  --text-secondary: #A89B9F;
+  --text-muted: #6B5E63;
+  --text-inverse: #0D0B0C;
+  --text-highlight: #E8A598;
+
+  --border: rgba(242, 233, 228, 0.08);
+  --border-subtle: rgba(242, 233, 228, 0.04);
+  --border-strong: rgba(242, 233, 228, 0.18);
+  --border-accent: rgba(110, 36, 53, 0.45);
+  --border-accent-strong: #6E2435;
+
+  --badge-bg: rgba(74, 24, 36, 0.3);
+  --badge-border: rgba(110, 36, 53, 0.4);
+  --badge-text: #E8A598;
+
+  --terminal-header: #1F171B;
+  --terminal-body: #120E10;
+  --code-token-green: #7FD99F;
+  --code-token-blue: #93C5FD;
+  --code-token-wine: #E8A598;
+  --code-token-yellow: #FDE047;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.55), 0 0 30px rgba(74, 24, 36, 0.15);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 50px rgba(110, 36, 53, 0.25);
+  --shadow-inner: inset 0 1px 1px rgba(242, 233, 228, 0.05);
+
+  --noise-opacity: 0.03;
+  --grid-line-color: rgba(242, 233, 228, 0.025);
+}
+
+/* ==========================================================================
+   LIGHT MODE (Warm Ivory & Deep Burgundy)
+   #F7F3F0 / #EFE7E3 / #3F111D / #651F32 / #1A1516 / #6D6366
+   ========================================================================== */
+html[data-theme='light'] {
+  --bg-primary: #F7F3F0;
+  --bg-secondary: #EFE7E3;
+  --bg-surface: #E5DDD8;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --bg-card-hover: #FFFFFF;
+  --bg-glass: rgba(247, 243, 240, 0.88);
+
+  --burgundy: #3F111D;
+  --accent: #651F32;
+  --accent-light: #8E2F48;
+  --accent-glow: rgba(101, 31, 50, 0.12);
+  --accent-soft: rgba(63, 17, 29, 0.08);
+  --accent-subtle: rgba(101, 31, 50, 0.05);
+
+  --text-primary: #1A1516;
+  --text-secondary: #6D6366;
+  --text-muted: #9E9296;
+  --text-inverse: #F7F3F0;
+  --text-highlight: #651F32;
+
+  --border: rgba(63, 17, 29, 0.12);
+  --border-subtle: rgba(63, 17, 29, 0.06);
+  --border-strong: rgba(63, 17, 29, 0.25);
+  --border-accent: rgba(101, 31, 50, 0.35);
+  --border-accent-strong: #3F111D;
+
+  --badge-bg: rgba(63, 17, 29, 0.07);
+  --badge-border: rgba(101, 31, 50, 0.2);
+  --badge-text: #3F111D;
+
+  --terminal-header: #E5DDD8;
+  --terminal-body: #FAF7F5;
+  --code-token-green: #1E6B3E;
+  --code-token-blue: #1D4ED8;
+  --code-token-wine: #651F32;
+  --code-token-yellow: #B45309;
+
+  --shadow-sm: 0 2px 6px rgba(63, 17, 29, 0.06);
+  --shadow-md: 0 8px 24px rgba(63, 17, 29, 0.08);
+  --shadow-lg: 0 16px 40px rgba(63, 17, 29, 0.12);
+  --shadow-inner: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+
+  --noise-opacity: 0.015;
+  --grid-line-color: rgba(63, 17, 29, 0.04);
+}
+
+/* ==========================================================================
+   CSS RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: var(--transition-theme);
+  position: relative;
+}
+
+/* Subtle background fine grid */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 48px 48px;
+  background-image: 
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--burgundy);
+  color: #F2E9E4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--burgundy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Focus styles for keyboard accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Containers */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Layout Section Base */
+.section-wrapper {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Editorial line separator */
+.editorial-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+  margin: 0;
+  border: none;
+}
+
+/* Editorial typography classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+/* Text Accents */
+.text-wine {
+  color: var(--accent);
+}
+
+.text-highlight {
+  color: var(--text-highlight);
+}
+
+.text-gradient-wine {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ==========================================================================
+   BUTTONS (Editorial Tech Style)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--burgundy);
+  color: #F2E9E4;
+  border: 1px solid var(--accent);
+  box-shadow: 0 4px 16px rgba(74, 24, 36, 0.35);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: 0.5s;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover::after {
+  left: 100%;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-soft);
+  border-color: var(--border-accent);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-sm {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.75rem;
+}
+
+/* Monospace Badges */
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  color: var(--badge-text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: var(--radius-xs);
+  transition: var(--transition-fast);
+}
+
+.tech-badge:hover {
+  border-color: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.tech-badge-glpi {
+  background: rgba(110, 36, 53, 0.25);
+  border-color: var(--accent);
+  color: var(--text-highlight);
+  font-weight: 600;
+}
+
+/* Editorial Glass Card */
+.editorial-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.editorial-card:hover {
+  border-color: var(--border-accent);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* Live Terminal / System Box */
+.terminal-window {
+  background: var(--terminal-body);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-mono);
+}
+
+.terminal-topbar {
+  background: var(--terminal-header);
+  border-bottom: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot.close { background: #FF5F56; }
+.terminal-dot.min { background: #FFBD2E; }
+.terminal-dot.max { background: #27C93F; }
+
+/* Section Header Style */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-highlight);
+  margin-bottom: 0.75rem;
+}
+
+.section-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background-color: var(--accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 620px;
+  line-height: 1.65;
+}
+
+/* Micro animations / Glow */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.pulse-glow {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
