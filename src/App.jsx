@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './components/layout/Navbar';
 import Hero from './sections/Hero';
-import About from './sections/About';
-import BeyondTheStack from './sections/BeyondTheStack';
 import Projects from './sections/Projects';
-import GLPISpotlight from './sections/GLPISpotlight';
-import Experience from './sections/Experience';
+import About from './sections/About';
 import Skills from './sections/Skills';
+import Experience from './sections/Experience';
+import BeyondTheStack from './sections/BeyondTheStack';
+import GLPISpotlight from './sections/GLPISpotlight';
 import Education from './sections/Education';
 import Contact from './sections/Contact';
 import Footer from './components/layout/Footer';
@@ -17,26 +17,26 @@ export default function App() {
 
   return (
     <div className="portfolio-app-root">
-      {/* Sticky Minimal Navbar */}
+      {/* Top Navbar */}
       <Navbar onOpenCV={() => setIsCVModalOpen(true)} />
 
-      {/* Main Content Sections */}
+      {/* Main Content Flow */}
       <main id="main-content">
         <Hero onOpenCV={() => setIsCVModalOpen(true)} />
-        <About />
-        <BeyondTheStack />
         <Projects />
-        <GLPISpotlight />
-        <Experience />
+        <About />
         <Skills />
+        <Experience />
+        <BeyondTheStack />
+        <GLPISpotlight />
         <Education />
         <Contact />
       </main>
 
-      {/* Editorial Footer */}
+      {/* Footer */}
       <Footer />
 
-      {/* Full CV Preview & PDF Print Modal */}
+      {/* Curriculum Vitae Modal */}
       <CVModal
         isOpen={isCVModalOpen}
         onClose={() => setIsCVModalOpen(false)}

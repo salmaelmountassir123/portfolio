@@ -1,134 +1,203 @@
 export const projectsData = [
   {
-    id: "stockpro",
-    number: "01",
-    name: "STOCKPRO",
-    category: "MICROSERVICES ARCHITECTURE",
-    tagline: "High-throughput stock management platform engineered with a decoupled Microservices architecture and API Gateway.",
-    description: "A resilient stock-management platform designed to eliminate monolithic single-points-of-failure. Structured around an intelligent API Gateway routing requests to 6 decoupled microservices: Authentication (JWT/RBAC), Product Catalog, Supplier Network, Stock Movement Logs, and Analytics Dashboard.",
-    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Recharts", "Vite"],
-    highlight: "6 Decoupled Independent Services + Centralized API Gateway",
-    architectureNodes: [
-      { name: "API GATEWAY", role: "Routing, Auth & Rate Limiting", port: ":8000", status: "ONLINE", latency: "12ms" },
-      { name: "AUTH SERVICE", role: "JWT Verification & RBAC", port: ":8001", status: "ONLINE", latency: "18ms" },
-      { name: "PRODUCTS SERVICE", role: "Catalog & SKU Indexing", port: ":8002", status: "ONLINE", latency: "22ms" },
-      { name: "SUPPLIERS SERVICE", role: "Vendor Relational Data", port: ":8003", status: "ONLINE", latency: "15ms" },
-      { name: "MOVEMENTS SERVICE", role: "Stock Auditing & Logs", port: ":8004", status: "ONLINE", latency: "28ms" },
-      { name: "DASHBOARD SERVICE", role: "Aggregations & Metrics", port: ":8005", status: "ONLINE", latency: "34ms" }
-    ],
-    technicalHighlights: [
-      "Engineered an API Gateway pattern for unified routing, client decoupling, and token verification.",
-      "Implemented role-based permissions (Admin, Stock Controller, Auditor) with secure stateless JWT tokens.",
-      "Developed an immutable stock movement transaction log for strict inventory traceability.",
-      "Built interactive data visualization panels with Recharts for replenishment forecasting."
-    ],
-    github: "https://github.com/elmountassirsalma12",
-    demo: "#live-demo-stockpro",
-    accentColor: "#6E2435"
-  },
-  {
-    id: "hajz",
-    number: "02",
-    name: "HAJZ",
-    category: "RESERVATION PLATFORM",
-    tagline: "Precision reservation management system with multi-step workflows and centralized Redux state.",
-    description: "An intuitive reservation platform built for effortless booking management. Features time-slot allocation, collision prevention algorithms, client verification, and synchronized Redux Toolkit state throughout the entire booking lifecycle.",
-    technologies: ["React.js", "Redux Toolkit", "CSS3", "JavaScript ES6+", "Responsive UI"],
-    highlight: "Deterministic Redux State Flow & Collision-Free Booking",
-    workflowSteps: [
-      { step: "01", title: "Slot Selection", desc: "Interactive calendar & real-time seat availability matrix" },
-      { step: "02", title: "Guest Credentials", desc: "Form validation with sanitized client inputs" },
-      { step: "03", title: "State Sync", desc: "Redux Toolkit slice updates & collision protection" },
-      { step: "04", title: "Instant Confirmation", desc: "Summary generation & notification dispatch" }
-    ],
-    technicalHighlights: [
-      "Engineered centralized Redux Toolkit state slices for slots, guest data, and session filters.",
-      "Prevented double-booking conflicts with optimistic UI updates and instant availability polling.",
-      "Crafted a bespoke, responsive CSS3 design system with zero layout shifts.",
-      "Optimized React render trees using memoized selectors and efficient action dispatchers."
-    ],
-    github: "https://github.com/elmountassirsalma12",
-    demo: "#live-demo-hajz",
-    accentColor: "#4A1824"
-  },
-  {
-    id: "ecommerce",
-    number: "03",
-    name: "E-COMMERCE",
-    category: "FULL-STACK PLATFORM",
-    tagline: "Robust online store connecting a reactive modern frontend with a secure Laravel RESTful backend.",
-    description: "A modern full-stack commercial platform combining a fluid React interface with a high-integrity Laravel REST API and MySQL database. Features structured category taxonomies, secure cart sessions, input sanitation, and transactional order records.",
-    technologies: ["React.js", "Laravel", "MySQL", "REST API", "Axios"],
-    highlight: "Secure RESTful Backend + Relational Database Integrity",
-    apiEndpoints: [
-      { method: "GET", path: "/api/v1/products", response: "200 OK — Paginated Catalogue" },
-      { method: "POST", path: "/api/v1/cart/sync", response: "200 OK — Session Cart State" },
-      { method: "POST", path: "/api/v1/orders/checkout", response: "201 CREATED — DB Transaction" }
-    ],
-    technicalHighlights: [
-      "Developed structured Laravel API controllers with request validation rules and clean JSON responses.",
-      "Designed normalized relational MySQL schemas for products, stock units, orders, and customer accounts.",
-      "Built resilient shopping cart state synchronized across browser sessions.",
-      "Configured Axios interceptors for automated authentication headers and unified error notifications."
-    ],
-    github: "https://github.com/elmountassirsalma12",
-    demo: "#live-demo-ecommerce",
-    accentColor: "#651F32"
-  },
-  {
     id: "cema",
-    number: "04",
-    name: "PARC INFORMATIQUE",
-    category: "CEMA BOIS DE L'ATLAS — INTERNAL IT ASSET MANAGEMENT",
-    tagline: "From a simple phone tracker to a full internal IT asset management platform, built during a professional internship.",
-    description: "Originally developed during an internship at CEMA BOIS DE L'ATLAS to track and assign the company's telephones, this application was progressively extended into a broader internal platform for managing the company's IT equipment. It now centralizes phones, computers, SIM cards, rooms, and machines, tracks which employee holds which equipment, keeps a history of assignments and changes, raises renewal alerts, and includes a basic server-verification workflow — giving the IT department a single, structured view of the equipment lifecycle.",
-    technologies: ["React.js", "Vite", "Django REST Framework", "MySQL", "REST API"],
-    highlight: "Evolved from a Phone Tracker into a Full Internal IT Asset Management Platform",
-    architectureFlow: ["React.js (Vite)", "Django REST API", "MySQL"],
-    screenshotCategories: [
-      { id: "auth", label: "Authentification", image: "/assets/projects/cema/login.png", caption: "Secure login screen for the application." },
-      { id: "dashboard", label: "Dashboard", image: "/assets/projects/cema/Dashboard.png", caption: "Overview of the equipment fleet: assigned devices, stock, and access levels." },
-      { id: "phones", label: "Téléphones", image: "/assets/projects/cema/telephones.png", caption: "Phone inventory with search and filters by employee, brand, and supplier." },
-      { id: "alerts", label: "Alertes", image: "/assets/projects/cema/alertes.png", caption: "Renewal alerts flagging equipment nearing its replacement deadline." },
-      { id: "computers", label: "Ordinateurs", image: null },
-      { id: "sim", label: "Puces / SIM", image: null },
-      { id: "rooms", label: "Salles", image: null },
-      { id: "machines", label: "Machines", image: null },
-      { id: "servers", label: "Vérification des serveurs", image: null },
-      { id: "history", label: "Historique", image: null },
-      { id: "admin", label: "Administration", image: null }
+    number: "01",
+    name: "Gestion des Téléphones",
+    shortName: "Gestion des Téléphones",
+    company: "CEMA Bois de l'Atlas",
+    category: "CEMA Bois de l'Atlas",
+    badgeType: "Professional Experience",
+    tagline: "Internal IT asset management and equipment assignment platform developed during internship.",
+    description: "A web application to manage phones, employees and equipment within the company. It includes inventory tracking, alerts and administration features. Originally developed to track and assign company telephones, it progressively expanded to manage the full IT asset fleet (computers, SIM cards, rooms, and machines) with full assignment history and renewal alerts.",
+    technologies: ["React", "Django", "Python", "MySQL", "Vite"],
+    techBadges: ["React", "Django", "Python", "MySQL", "Vite"],
+    previewImage: "/assets/projects/cema/Dashboard.png",
+    thumbnails: [
+      { id: "dash", image: "/assets/projects/cema/Dashboard.png", label: "Dashboard" },
+      { id: "phones", image: "/assets/projects/cema/telephones.png", label: "Téléphones" },
+      { id: "alerts", image: "/assets/projects/cema/alertes.png", label: "Alertes" },
+      { id: "login", image: "/assets/projects/cema/login.png", label: "Authentification" }
     ],
-    technicalHighlights: [
-      "Started as a phone-tracking tool and was progressively extended into a full internal IT asset management platform.",
-      "Centralized equipment records for phones, computers, SIM cards, rooms, and machines in a single system.",
-      "Built employee-to-equipment assignment tracking with a full history of assignments and changes.",
-      "Added renewal/expiry alerts and a basic server-verification workflow to support IT equipment follow-up."
+    keyFeatures: [
+      "Authentication / Login",
+      "Status tracking",
+      "Dashboard",
+      "Alerts",
+      "Telephone inventory management",
+      "Administration",
+      "Employee assignment",
+      "CRUD operations"
     ],
+    sections: {
+      overview: "A comprehensive internal IT asset management web application built during a professional internship at CEMA Bois de l'Atlas. Centralizes hardware, telephone lines, assignments, and replacement lifecycles.",
+      context: "The IT department required a structured, reliable tool to replace spreadsheet-based equipment tracking and maintain precise accountability of employee assignments.",
+      role: "Sole developer responsible for end-to-end architecture: React frontend with Vite, Django REST API backend, MySQL database schema, and role-based authentication.",
+      technologies: "React.js, Vite, Django REST Framework, Python, MySQL, CSS Modules, JWT.",
+      features: "Phone inventory tracking, employee assignment workflows, renewal alert notifications, server verification logs, and role-based permissions.",
+      challenges: "Designing a flexible data model accommodating different hardware types while maintaining clean relational integrity and historical tracking.",
+      whatILearned: "Bridging software engineering with real IT operations; managing edge cases in corporate hardware lifecycles; designing user-friendly enterprise interfaces."
+    },
     github: "https://github.com/elmountassirsalma12",
     demo: "#live-demo-cema",
-    accentColor: "#6E2435"
+    accentColor: "#2563EB"
   },
   {
     id: "gestion-client",
-    number: "05",
-    name: "GESTION CLIENT",
-    category: "CLIENT MANAGEMENT WEB APP",
-    status: "in-progress",
+    number: "02",
+    name: "Gestion Client",
+    shortName: "Gestion Client",
+    company: "Freelance Project",
+    category: "Freelance Project",
+    badgeType: "Active Development",
     statusLabel: "EN COURS DE DÉVELOPPEMENT",
-    tagline: "Application de gestion client — a new project, actively being built, not a finished product yet.",
-    description: "A new web application currently under development, designed to make client management and business activity tracking easier through a modern, professional web interface. It includes a dashboard tracking total and active clients, revenue, and payments, with features for managing clients and related business data still being built out progressively.",
-    technologies: ["React.js", "Vite", "Django REST Framework", "MySQL"],
-    highlight: "Early-Stage Project — Actively Being Built",
-    screenshotCategories: [
-      { id: "dashboard", label: "Dashboard", image: "/assets/projects/gestion-client/dashboard.png", caption: "Current state of the client management dashboard (work in progress)." }
+    tagline: "Modern client management web application for tracking business activity, clients, and revenues.",
+    description: "A new web application currently under active development, designed to streamline client management and business activity tracking through an intuitive, modern dashboard. Includes metrics for active clients, revenue tracking, and payment statuses.",
+    technologies: ["React", "Laravel", "PHP", "MySQL"],
+    techBadges: ["React", "Laravel", "PHP", "MySQL"],
+    previewImage: "/assets/projects/gestion-client/dashboard.png",
+    thumbnails: [
+      { id: "dash", image: "/assets/projects/gestion-client/dashboard.png", label: "Dashboard" }
     ],
-    technicalHighlights: [
-      "Started recently and currently under active development.",
-      "Building a dashboard to manage clients, revenues, and related business activity.",
-      "Architecture and feature set are still evolving as the project progresses."
+    keyFeatures: [
+      "Client Directory & Profiles",
+      "Revenue & Payment Metrics",
+      "Activity Timeline",
+      "Status Filtering",
+      "Invoice Tracking",
+      "Responsive Layout",
+      "RESTful API Integration",
+      "Data Export & Reports"
     ],
+    sections: {
+      overview: "Client relationship and financial activity tracker built to provide small businesses and freelancers with a clean, actionable overview of their client pipelines.",
+      context: "Initiated as a practical freelance solution to replace convoluted spreadsheets with a responsive, role-protected web portal.",
+      role: "Full-stack development: Frontend dashboard in React and backend API endpoints.",
+      technologies: "React.js, Laravel / Django REST, PHP / Python, MySQL, Tailwind / Vanilla CSS.",
+      features: "Client directory, invoice summaries, payment tracking, activity dashboard.",
+      challenges: "Structuring reactive dashboard widgets with dynamic filtering and real-time state updates.",
+      whatILearned: "Optimizing dashboard rendering performance and modeling financial transaction lifecycles."
+    },
     github: "https://github.com/elmountassirsalma12",
     demo: "#live-demo-gestion-client",
-    accentColor: "#8E2F48"
+    accentColor: "#2563EB"
+  },
+  {
+    id: "stockpro",
+    number: "03",
+    name: "StockPro",
+    shortName: "StockPro",
+    company: "Stock Management",
+    category: "Stock Management",
+    badgeType: "Microservices Architecture",
+    tagline: "High-throughput stock management platform engineered with a decoupled Microservices architecture and API Gateway.",
+    description: "A resilient stock-management platform structured around an intelligent API Gateway routing requests to 6 decoupled microservices: Authentication (JWT/RBAC), Product Catalog, Supplier Network, Stock Movement Logs, and Analytics Dashboard.",
+    technologies: ["React", "Node.js", "MongoDB", "Express", "JWT"],
+    techBadges: ["React", "Node.js", "MongoDB"],
+    previewImage: "/assets/Stockpro/dashboard.png",
+    thumbnails: [
+      { id: "dash", image: "/assets/Stockpro/dashboard.png", label: "Dashboard" },
+      { id: "prod", image: "/assets/Stockpro/products.png", label: "Products" },
+      { id: "rep", image: "/assets/Stockpro/reports.png", label: "Reports" }
+    ],
+    keyFeatures: [
+      "API Gateway Routing (:8000)",
+      "Role-Based JWT Authentication",
+      "Catalog & SKU Indexing",
+      "Supplier Relationship Data",
+      "Stock Movement Audit Trail",
+      "Interactive Analytics (Recharts)",
+      "Low-Stock Alerts & ETA",
+      "Decoupled Microservice Nodes"
+    ],
+    sections: {
+      overview: "A distributed stock management system engineered with 6 standalone services coordinated through a central API Gateway.",
+      context: "Built to demonstrate scalable backend architecture, eliminating single points of failure in traditional monolithic inventory software.",
+      role: "System architect and full-stack engineer: designed service contracts, API gateway routing, and React monitoring interface.",
+      technologies: "React.js, Node.js, Express, MongoDB, Recharts, Vite, JWT.",
+      features: "Stateless token verification, inventory audit logs, vendor tracking, analytics graphs.",
+      challenges: "Maintaining data consistency across microservices and handling request routing with low latency.",
+      whatILearned: "Microservice decoupling patterns, API Gateway token verification, and asynchronous event handling."
+    },
+    github: "https://github.com/elmountassirsalma12",
+    demo: "#live-demo-stockpro",
+    accentColor: "#2563EB"
+  },
+  {
+    id: "hajz",
+    number: "04",
+    name: "HAJZ.ma",
+    shortName: "HAJZ.ma",
+    company: "Booking Platform",
+    category: "Booking Platform",
+    badgeType: "Frontend & State Machine",
+    tagline: "Precision reservation management system with multi-step workflows and centralized Redux state.",
+    description: "An intuitive booking platform built for effortless reservation management. Features time-slot allocation, collision prevention algorithms, client verification, and synchronized Redux Toolkit state throughout the entire booking lifecycle.",
+    technologies: ["React", "JavaScript", "Bootstrap", "Redux Toolkit"],
+    techBadges: ["React", "JavaScript", "Bootstrap"],
+    previewImage: "/assets/projects/hajz-preview.jpg",
+    thumbnails: [
+      { id: "main", image: "/assets/projects/hajz-preview.jpg", label: "Booking Workflow" }
+    ],
+    keyFeatures: [
+      "Multi-Step Booking Wizard",
+      "Collision-Free Slot Allocation",
+      "Centralized Redux State",
+      "Real-Time Availability Polling",
+      "Client Input Sanitization",
+      "Booking Confirmation Dispatches",
+      "Optimistic UI Updates",
+      "Zero Layout-Shift Responsive Design"
+    ],
+    sections: {
+      overview: "A responsive reservation engine designed for high-concurrency booking workflows with zero double-booking errors.",
+      context: "Created to solve availability race conditions and provide a smooth, frictionless multi-step booking process.",
+      role: "Frontend Engineer: designed state hierarchy, UI/UX interaction flows, and validation rules.",
+      technologies: "React.js, Redux Toolkit, JavaScript ES6+, Bootstrap 5, CSS3.",
+      features: "Interactive calendar, seat/slot availability matrix, client credential validation, instant booking confirmation.",
+      challenges: "Preventing conflicting slot reservations during concurrent guest sessions with optimistic state management.",
+      whatILearned: "Advanced Redux Toolkit slice architecture, memoized selectors, and deterministic state transitions."
+    },
+    github: "https://github.com/elmountassirsalma12",
+    demo: "#live-demo-hajz",
+    accentColor: "#2563EB"
+  },
+  {
+    id: "ecommerce",
+    number: "05",
+    name: "E-commerce Website",
+    shortName: "E-commerce Website",
+    company: "Online Store",
+    category: "Online Store",
+    badgeType: "Full-Stack Architecture",
+    tagline: "Robust online store connecting a reactive modern frontend with a secure Laravel RESTful backend.",
+    description: "A modern commercial platform combining a fluid React interface with a high-integrity Laravel REST API and MySQL database. Features structured category taxonomies, secure cart sessions, input sanitation, and transactional order records.",
+    technologies: ["React", "Laravel", "MySQL", "REST API", "Axios"],
+    techBadges: ["React", "Laravel", "MySQL"],
+    previewImage: "/assets/projects/ecommerce-preview.jpg",
+    thumbnails: [
+      { id: "main", image: "/assets/projects/ecommerce-preview.jpg", label: "Storefront & Cart" }
+    ],
+    keyFeatures: [
+      "Paginated Product Catalog",
+      "Category & Price Filtering",
+      "Persistent Shopping Cart Session",
+      "Laravel RESTful API Controllers",
+      "Relational MySQL Schema (ACID)",
+      "Laravel Sanctum Auth & CSRF",
+      "Axios Interceptors & Error Catching",
+      "Checkout Order Transactions"
+    ],
+    sections: {
+      overview: "A full-featured e-commerce store with reactive cart management, category filtering, and relational database integrity.",
+      context: "Built to demonstrate secure REST API development, session-independent shopping cart state, and normalized relational databases.",
+      role: "Full-Stack Developer: authored Laravel backend controllers, database migrations, and React storefront.",
+      technologies: "React.js, Laravel, MySQL, REST API, Axios, Sanctum.",
+      features: "Product catalog, dynamic cart synchronizer, order placement transactions, authentication middleware.",
+      challenges: "Synchronizing browser cart state with backend inventory levels and maintaining transactional consistency.",
+      whatILearned: "Laravel controller patterns, MySQL indexing for product catalogues, and token-based API authentication."
+    },
+    github: "https://github.com/elmountassirsalma12",
+    demo: "#live-demo-ecommerce",
+    accentColor: "#2563EB"
   }
 ];

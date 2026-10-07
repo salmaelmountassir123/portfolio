@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, ArrowUpRight, Sparkles, Send } from 'lucide-react';
+import { Mail, MapPin, Copy, Check, ArrowRight, Sparkles, Send } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '../components/ui/Icons';
-
-// TODO: replace with the real LinkedIn profile URL before final deployment.
-const LINKEDIN_URL = "";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -17,224 +14,332 @@ export default function Contact() {
 
   return (
     <section className="section-wrapper contact-section" id="contact">
-      {/* Background Wine Glow */}
-      <div className="contact-ambient-glow"></div>
-
       <div className="container">
-        <div className="contact-editorial-card">
-          <div className="contact-eyebrow font-mono">
-            <Sparkles size={14} className="text-highlight" />
-            <span>START A CONVERSATION</span>
+        {/* Editorial Dark Navy Contact Banner Card */}
+        <div className="contact-banner-card">
+          {/* Decorative Right Wave SVG & Accent */}
+          <div className="contact-wave-bg" aria-hidden="true">
+            <svg
+              viewBox="0 0 600 400"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="wave-svg"
+            >
+              <path
+                d="M300 400C320 300 450 220 500 120C540 40 580 20 600 0V400H300Z"
+                fill="url(#wave-grad-1)"
+                opacity="0.15"
+              />
+              <path
+                d="M350 400C370 280 480 200 520 90C550 20 590 10 600 0"
+                stroke="url(#wave-grad-2)"
+                strokeWidth="1.5"
+                opacity="0.4"
+              />
+              <path
+                d="M400 400C410 320 490 260 540 160C570 90 590 40 600 0"
+                stroke="url(#wave-grad-2)"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+              <path
+                d="M250 400C300 310 430 240 480 140C520 60 570 30 600 10"
+                stroke="url(#wave-grad-2)"
+                strokeWidth="1.5"
+                opacity="0.3"
+              />
+              <defs>
+                <linearGradient id="wave-grad-1" x1="600" y1="0" x2="300" y2="400" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#0066FF" stopOpacity="0.8" />
+                  <stop offset="1" stopColor="#0066FF" stopOpacity="0" />
+                </linearGradient>
+                <linearGradient id="wave-grad-2" x1="600" y1="0" x2="250" y2="400" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#38BDF8" />
+                  <stop offset="1" stopColor="#0066FF" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div className="wave-text-accent">
+              <span>Better</span>
+              <span className="indent-1">Things</span>
+              <span className="indent-2">Ahead ✨</span>
+            </div>
           </div>
 
-          <h2 className="contact-headline font-display">
-            LET'S BUILD <br />
-            <span className="text-gradient-wine">SOMETHING</span> <br />
-            <span className="font-serif italic font-normal">USEFUL.</span>
-          </h2>
+          {/* Left / Main Contact Content */}
+          <div className="contact-card-content">
+            <span className="contact-tag font-mono">CONTACT</span>
 
-          <p className="contact-subtitle">
-            Have an idea, a project or an opportunity? I am currently open to full-time roles, internships, and ambitious engineering collaborations.
-          </p>
+            <h2 className="contact-title font-display">
+              Let's Work Together
+            </h2>
 
-          {/* Interactive Direct Email Card */}
-          <div className="contact-email-box">
-            <div className="email-meta font-mono">
-              <Mail size={16} className="text-highlight" />
-              <span className="email-address">{email}</span>
+            <p className="contact-subtitle">
+              Have a project in mind or just want to connect? I'd love to hear from you.
+            </p>
+
+            {/* Email Box */}
+            <div className="contact-info-boxes">
+              <div className="contact-info-pill">
+                <div className="info-icon-wrap">
+                  <Mail size={16} />
+                </div>
+                <div className="info-text-wrap">
+                  <span className="info-label font-mono">Email</span>
+                  <a href={`mailto:${email}`} className="info-val font-mono">
+                    {email}
+                  </a>
+                </div>
+                <button
+                  onClick={copyEmail}
+                  className="copy-btn"
+                  title="Copy email to clipboard"
+                  aria-label="Copy email"
+                >
+                  {copied ? <Check size={14} className="text-green" /> : <Copy size={14} />}
+                </button>
+              </div>
+
+              {/* Location Box */}
+              <div className="contact-info-pill">
+                <div className="info-icon-wrap">
+                  <MapPin size={16} />
+                </div>
+                <div className="info-text-wrap">
+                  <span className="info-label font-mono">Location</span>
+                  <span className="info-val">Fès, Morocco</span>
+                </div>
+              </div>
             </div>
 
-            <div className="email-actions">
-              <button
-                onClick={copyEmail}
-                className="btn btn-secondary btn-sm"
-                id="copy-email-btn"
-                title="Copy email to clipboard"
-              >
-                {copied ? (
-                  <>
-                    <Check size={14} className="text-green" />
-                    <span>COPIED TO CLIPBOARD</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={14} />
-                    <span>COPY EMAIL</span>
-                  </>
-                )}
-              </button>
+            {/* Bottom Row: Socials & Get In Touch CTA */}
+            <div className="contact-actions-row">
+              <div className="contact-social-icons">
+                <a
+                  href="https://github.com/elmountassirsalma12"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-btn"
+                  aria-label="GitHub Profile"
+                >
+                  <GithubIcon size={18} />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon-btn"
+                  aria-label="LinkedIn Profile"
+                >
+                  <LinkedinIcon size={18} />
+                </a>
+              </div>
+
               <a
                 href={`mailto:${email}`}
-                className="btn btn-primary btn-sm"
-                id="mailto-btn"
+                className="btn btn-primary contact-cta-btn"
+                id="contact-get-in-touch-btn"
               >
-                <Send size={14} />
-                <span>LET'S TALK</span>
+                <span>Get in Touch</span>
+                <ArrowRight size={16} />
               </a>
             </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="contact-socials-row font-mono">
-            <a
-              href={LINKEDIN_URL || "#"}
-              target={LINKEDIN_URL ? "_blank" : undefined}
-              rel={LINKEDIN_URL ? "noopener noreferrer" : undefined}
-              className="social-btn"
-              id="contact-linkedin"
-              title={LINKEDIN_URL ? undefined : "LinkedIn URL not set yet"}
-              aria-disabled={!LINKEDIN_URL}
-              onClick={(e) => { if (!LINKEDIN_URL) e.preventDefault(); }}
-            >
-              <LinkedinIcon size={15} />
-              <span>LINKEDIN</span>
-              <ArrowUpRight size={13} className="social-arrow" />
-            </a>
-
-            <a
-              href="https://github.com/elmountassirsalma12"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-btn"
-              id="contact-github"
-            >
-              <GithubIcon size={15} />
-              <span>GITHUB</span>
-              <ArrowUpRight size={13} className="social-arrow" />
-            </a>
           </div>
         </div>
       </div>
 
       <style>{`
         .contact-section {
-          background: var(--bg-secondary);
+          background: var(--bg-primary);
+          position: relative;
+        }
+        .contact-banner-card {
+          background: #0B1120;
+          color: #F8FAFC;
+          border-radius: var(--radius-xl);
+          padding: 2.5rem 2rem;
           position: relative;
           overflow: hidden;
-          padding-bottom: 8rem;
-        }
-        .contact-ambient-glow {
-          position: absolute;
-          bottom: 10%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 600px;
-          height: 400px;
-          background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-          pointer-events: none;
-          z-index: 0;
-          opacity: 0.5;
-          filter: blur(50px);
-        }
-        .contact-editorial-card {
-          background: var(--bg-card);
-          border: 1px solid var(--border-accent);
-          border-radius: var(--radius-sm);
-          padding: 3rem 2rem;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           box-shadow: var(--shadow-lg);
-          position: relative;
-          z-index: 1;
+          border: 1px solid rgba(255, 255, 255, 0.08);
         }
         @media (min-width: 768px) {
-          .contact-editorial-card {
-            padding: 5rem 4rem;
+          .contact-banner-card {
+            padding: 3.5rem 3.5rem;
           }
         }
-        .contact-eyebrow {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          font-size: 0.78rem;
-          letter-spacing: 0.2em;
-          color: var(--text-highlight);
-          margin-bottom: 1.5rem;
+        .contact-wave-bg {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 50%;
+          pointer-events: none;
+          display: none;
         }
-        .contact-headline {
-          font-size: clamp(2.5rem, 6vw, 4.8rem);
-          font-weight: 900;
-          line-height: 1.05;
-          letter-spacing: -0.02em;
-          color: var(--text-primary);
-          margin-bottom: 1.5rem;
+        @media (min-width: 768px) {
+          .contact-wave-bg {
+            display: block;
+          }
         }
-        .contact-subtitle {
-          font-size: clamp(1rem, 1.4vw, 1.2rem);
-          color: var(--text-secondary);
-          max-width: 580px;
-          line-height: 1.6;
-          margin-bottom: 2.5rem;
+        .wave-svg {
+          position: absolute;
+          top: 0;
+          right: 0;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
-        .contact-email-box {
-          background: var(--terminal-body);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
-          padding: 1rem 1.5rem;
+        .wave-text-accent {
+          position: absolute;
+          top: 40%;
+          right: 8%;
+          transform: translateY(-50%);
           display: flex;
           flex-direction: column;
-          gap: 1rem;
+          font-family: var(--font-display);
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.25;
+          text-shadow: 0 0 20px rgba(0, 102, 255, 0.5);
+        }
+        .indent-1 {
+          margin-left: 1.5rem;
+          color: #38BDF8;
+        }
+        .indent-2 {
+          margin-left: 3rem;
+          color: #60A5FA;
+        }
+        .contact-card-content {
+          position: relative;
+          z-index: 1;
+          max-width: 540px;
+        }
+        .contact-tag {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #60A5FA;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+        .contact-title {
+          font-size: clamp(2rem, 4vw, 2.8rem);
+          font-weight: 800;
+          color: #FFFFFF;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          margin-bottom: 0.75rem;
+        }
+        .contact-subtitle {
+          font-size: 1rem;
+          color: #94A3B8;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+        .contact-info-boxes {
+          display: flex;
+          flex-direction: column;
+          gap: 0.85rem;
+          margin-bottom: 2.25rem;
+        }
+        .contact-info-pill {
+          display: flex;
           align-items: center;
-          margin-bottom: 2.5rem;
-          width: 100%;
-          max-width: 580px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: var(--radius-sm);
+          padding: 0.75rem 1.1rem;
+          gap: 0.85rem;
+          transition: var(--transition-fast);
         }
-        @media (min-width: 600px) {
-          .contact-email-box {
-            flex-direction: row;
-            justify-content: space-between;
-          }
+        .contact-info-pill:hover {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(59, 130, 246, 0.4);
         }
-        .email-meta {
+        .info-icon-wrap {
+          color: #60A5FA;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .info-text-wrap {
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+        }
+        .info-label {
+          font-size: 0.65rem;
+          color: #64748B;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+        .info-val {
+          font-size: 0.85rem;
+          color: #F8FAFC;
+          font-weight: 500;
+        }
+        .copy-btn {
+          color: #94A3B8;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px;
+          border-radius: 4px;
+          transition: var(--transition-fast);
+        }
+        .copy-btn:hover {
+          color: #FFFFFF;
+          background: rgba(255, 255, 255, 0.1);
+        }
+        .text-green {
+          color: #10B981;
+        }
+        .contact-actions-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+        }
+        .contact-social-icons {
           display: flex;
           align-items: center;
           gap: 0.6rem;
-          font-size: 0.85rem;
-          color: var(--text-primary);
         }
-        .email-address {
-          word-break: break-all;
-        }
-        .email-actions {
+        .social-icon-btn {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.07);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          color: #CBD5E1;
           display: flex;
-          gap: 0.5rem;
-        }
-        .text-green {
-          color: #27C93F;
-        }
-        .contact-socials-row {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1rem;
-        }
-        .social-btn {
-          display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.65rem 1.25rem;
-          background: var(--bg-surface);
-          border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
-          font-size: 0.78rem;
-          color: var(--text-secondary);
+          justify-content: center;
           transition: var(--transition-fast);
         }
-        .social-btn:hover {
-          background: var(--burgundy);
-          border-color: var(--accent);
-          color: #F2E9E4;
+        .social-icon-btn:hover {
+          color: #FFFFFF;
+          background: #0066FF;
+          border-color: #0066FF;
           transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 102, 255, 0.4);
         }
-        .social-arrow {
-          color: var(--text-muted);
-          transition: var(--transition-fast);
+        .contact-cta-btn {
+          background-color: #0066FF;
+          border-color: #0066FF;
+          color: #FFFFFF;
+          padding: 0.75rem 1.6rem;
+          border-radius: var(--radius-sm);
         }
-        .social-btn:hover .social-arrow {
-          color: #F2E9E4;
-          transform: translate(2px, -2px);
+        .contact-cta-btn:hover {
+          background-color: #0052CC;
+          border-color: #0052CC;
         }
       `}</style>
     </section>

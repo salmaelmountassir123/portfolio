@@ -16,7 +16,7 @@ import {
 import SectionHeader from '../components/ui/SectionHeader';
 
 export default function BeyondTheStack() {
-  const [selectedStep, setSelectedStep] = useState(2); // Default to API
+  const [selectedStep, setSelectedStep] = useState(2); // Default to API Gateway
 
   const flowSteps = [
     {
@@ -27,8 +27,7 @@ export default function BeyondTheStack() {
       icon: Users,
       action: 'Triggers HTTP action or UI state change',
       detail: 'Initiates user interaction, form input, or data request from modern web interface.',
-      protocol: 'HTTPS / TLS 1.3',
-      color: '#A89B9F'
+      protocol: 'HTTPS / TLS 1.3'
     },
     {
       id: 'frontend',
@@ -38,8 +37,7 @@ export default function BeyondTheStack() {
       icon: Layout,
       action: 'State dispatch & optimistic UI update',
       detail: 'Validates inputs, manages component lifecycle, handles client-side caching, and formats payload.',
-      protocol: 'DOM Events / Axios Interceptor',
-      color: '#E8A598'
+      protocol: 'DOM Events / Axios Interceptor'
     },
     {
       id: 'api',
@@ -49,8 +47,7 @@ export default function BeyondTheStack() {
       icon: Network,
       action: 'Bearer token validation & routing',
       detail: 'Authenticates authorization headers, applies rate limits, and routes payload to target microservice or controller.',
-      protocol: 'RESTful JSON / CORS Policy',
-      color: '#9B3B52'
+      protocol: 'RESTful JSON / CORS Policy'
     },
     {
       id: 'backend',
@@ -60,8 +57,7 @@ export default function BeyondTheStack() {
       icon: Server,
       action: 'Business rules & query execution',
       detail: 'Executes domain logic, verifies permissions with role-based middleware, and coordinates transactions.',
-      protocol: 'Async Worker / MVC Controllers',
-      color: '#6E2435'
+      protocol: 'Async Worker / MVC Controllers'
     },
     {
       id: 'database',
@@ -71,8 +67,7 @@ export default function BeyondTheStack() {
       icon: Database,
       action: 'Atomic storage & index queries',
       detail: 'Guarantees ACID transactional compliance in MySQL or fast flexible document retrieval in MongoDB.',
-      protocol: 'TCP / Connection Pooling',
-      color: '#4A1824'
+      protocol: 'TCP / Connection Pooling'
     },
     {
       id: 'server',
@@ -82,8 +77,7 @@ export default function BeyondTheStack() {
       icon: Terminal,
       action: 'Process runtime & API serving',
       detail: 'Runs the application backend process and serves API requests during development and deployment testing.',
-      protocol: 'HTTP / Process Runtime',
-      color: '#6E2435'
+      protocol: 'HTTP / Process Runtime'
     },
     {
       id: 'it',
@@ -93,34 +87,32 @@ export default function BeyondTheStack() {
       icon: ShieldCheck,
       action: 'Equipment tracking & assignment history',
       detail: 'Tracks corporate hardware inventory and employee-equipment assignments, with basic hands-on exposure to GLPI\'s inventory and ticketing modules.',
-      protocol: 'REST API / Manual & GLPI Inventory',
-      color: '#9B3B52'
+      protocol: 'REST API / GLPI Inventory'
     }
   ];
 
   const current = flowSteps[selectedStep];
 
   return (
-    <section className="section-wrapper beyond-section" id="beyond-the-stack">
+    <section className="section-wrapper beyond-section" id="systems-architecture">
       <div className="container">
         <SectionHeader
-          eyebrow="SYSTEMS THINKING"
-          number="DIFFERENTIATOR"
-          title="I don't only build applications. I understand the systems behind them."
+          eyebrow="SYSTEMS ARCHITECTURE"
+          title="End-to-End Systems Thinking"
           subtitle="A holistic understanding from the client-side pixel to the database and internal IT asset management tooling."
         />
 
-        {/* Interactive Architecture Pipeline Ribbon */}
+        {/* Interactive Architecture Pipeline Card */}
         <div className="pipeline-card">
           <div className="pipeline-header">
             <div className="pipeline-title font-mono">
-              <Activity size={16} className="text-highlight" />
-              <span>END-TO-END SYSTEM PIPELINE (INTERACTIVE INSPECTOR)</span>
+              <Activity size={16} className="text-accent" />
+              <span>DATAFLOW PIPELINE INSPECTOR</span>
             </div>
-            <span className="font-mono text-xs text-muted">CLICK TO TRACE DATAFLOW</span>
+            <span className="font-mono text-xs text-muted">CLICK ANY STAGE TO INSPECT</span>
           </div>
 
-          {/* Desktop & Mobile Scrollable Flow Track */}
+          {/* Flow Track */}
           <div className="flow-track-wrapper">
             <div className="flow-track">
               {flowSteps.map((step, idx) => {
@@ -138,10 +130,9 @@ export default function BeyondTheStack() {
                       </div>
                       <div className="flow-node-meta">
                         <span className="flow-node-num font-mono">0{idx + 1}</span>
-                        <span className="flow-node-label font-display">{step.label}</span>
+                        <span className="flow-node-label">{step.label}</span>
                         <span className="flow-node-tech font-mono">{step.tech.split('·')[0]}</span>
                       </div>
-                      {isSelected && <span className="active-pip"></span>}
                     </button>
 
                     {idx < flowSteps.length - 1 && (
@@ -161,10 +152,10 @@ export default function BeyondTheStack() {
             <div className="inspector-topbar">
               <div className="inspector-title">
                 <span className="stage-badge font-mono">STAGE 0{selectedStep + 1} OF 07</span>
-                <h4 className="font-display stage-heading">{current.label} — {current.subtitle}</h4>
+                <h4 className="stage-heading font-display">{current.label} — {current.subtitle}</h4>
               </div>
               <div className="protocol-badge font-mono">
-                <Zap size={12} className="text-highlight" />
+                <Zap size={12} className="text-accent" />
                 <span>{current.protocol}</span>
               </div>
             </div>
@@ -172,16 +163,16 @@ export default function BeyondTheStack() {
             <div className="inspector-content-grid">
               <div className="inspector-main">
                 <div className="inspector-action-bar font-mono">
-                  <span className="text-highlight">OPERATION:</span> {current.action}
+                  <span className="text-accent font-semibold">OPERATION:</span> {current.action}
                 </div>
                 <p className="inspector-desc">{current.detail}</p>
               </div>
 
               <div className="inspector-tech-box">
-                <span className="inspector-box-label font-mono">CONNECTED TECHNOLOGIES:</span>
+                <span className="inspector-box-label font-mono">CONNECTED TECHNOLOGIES</span>
                 <div className="tech-pills-row">
                   {current.tech.split('·').map((t, i) => (
-                    <span key={i} className="tech-badge tech-badge-glpi">
+                    <span key={i} className="tech-badge">
                       {t.trim()}
                     </span>
                   ))}
@@ -190,19 +181,19 @@ export default function BeyondTheStack() {
             </div>
           </div>
 
-          {/* Bottom Connectivity Bar */}
-          <div className="pipeline-footer-bar font-mono">
+          {/* Bottom Connectivity Highlights */}
+          <div className="pipeline-footer-bar">
             <div className="pipe-foot-item">
-              <CheckCircle2 size={13} className="text-highlight" />
+              <CheckCircle2 size={14} className="text-accent" />
               <span>Full-Stack Development (React · Django · Laravel · Node · Python)</span>
             </div>
             <div className="pipe-foot-item">
-              <CheckCircle2 size={13} className="text-highlight" />
+              <CheckCircle2 size={14} className="text-accent" />
               <span>Data Persistence (MySQL · MongoDB)</span>
             </div>
             <div className="pipe-foot-item">
-              <CheckCircle2 size={13} className="text-highlight" />
-              <span>IT Asset Management (Custom Platform · GLPI Basics)</span>
+              <CheckCircle2 size={14} className="text-accent" />
+              <span>IT Asset Management (Custom Platform · GLPI Exposure)</span>
             </div>
           </div>
         </div>
@@ -215,8 +206,8 @@ export default function BeyondTheStack() {
         }
         .pipeline-card {
           background: var(--bg-card);
-          border: 1px solid var(--border-accent);
-          border-radius: var(--radius-sm);
+          border: 1px solid var(--border);
+          border-radius: var(--radius-lg);
           padding: 1.75rem;
           box-shadow: var(--shadow-md);
         }
@@ -232,6 +223,7 @@ export default function BeyondTheStack() {
         }
         .pipeline-title {
           font-size: 0.82rem;
+          font-weight: 700;
           display: flex;
           align-items: center;
           gap: 0.5rem;
@@ -262,14 +254,13 @@ export default function BeyondTheStack() {
           display: flex;
           align-items: center;
           gap: 0.75rem;
-          background: var(--bg-surface);
+          background: var(--bg-secondary);
           border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
+          border-radius: var(--radius-sm);
           padding: 0.75rem 0.6rem;
           cursor: pointer;
           transition: var(--transition-fast);
           text-align: left;
-          position: relative;
         }
         @media (min-width: 860px) {
           .flow-node-btn {
@@ -280,14 +271,13 @@ export default function BeyondTheStack() {
           }
         }
         .flow-node-btn:hover {
-          background: var(--bg-surface-elevated);
-          border-color: var(--border-accent);
+          border-color: var(--accent);
           transform: translateY(-2px);
         }
         .flow-node-btn.active {
-          background: var(--bg-surface-elevated);
-          border-color: var(--accent-light);
-          box-shadow: 0 4px 16px var(--accent-glow);
+          background: var(--bg-surface);
+          border-color: var(--accent);
+          box-shadow: 0 4px 14px rgba(0, 102, 255, 0.2);
         }
         .flow-node-icon {
           display: flex;
@@ -296,13 +286,12 @@ export default function BeyondTheStack() {
           width: 28px;
           height: 28px;
           border-radius: var(--radius-xs);
-          background: var(--bg-card);
-          color: var(--text-highlight);
-          border: 1px solid var(--border);
+          background: var(--badge-bg);
+          color: var(--accent);
         }
         .flow-node-btn.active .flow-node-icon {
-          background: var(--burgundy);
-          color: #F2E9E4;
+          background: var(--accent);
+          color: #FFFFFF;
         }
         .flow-node-meta {
           display: flex;
@@ -313,9 +302,8 @@ export default function BeyondTheStack() {
           color: var(--text-muted);
         }
         .flow-node-label {
-          font-size: 0.75rem;
+          font-size: 0.8rem;
           font-weight: 700;
-          letter-spacing: 0.05em;
           color: var(--text-primary);
         }
         .flow-node-tech {
@@ -325,19 +313,11 @@ export default function BeyondTheStack() {
           overflow: hidden;
           text-overflow: ellipsis;
         }
-        .active-pip {
-          position: absolute;
-          bottom: -1px;
-          left: 10%;
-          right: 10%;
-          height: 2px;
-          background: var(--accent-light);
-        }
         .flow-arrow {
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--border-accent);
+          color: var(--accent);
         }
         .arrow-icon-desktop {
           display: none;
@@ -354,9 +334,9 @@ export default function BeyondTheStack() {
           }
         }
         .step-inspector-box {
-          background: var(--terminal-body);
+          background: var(--bg-secondary);
           border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
+          border-radius: var(--radius-sm);
           padding: 1.5rem;
           margin-bottom: 1.5rem;
         }
@@ -364,28 +344,30 @@ export default function BeyondTheStack() {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          border-bottom: 1px solid var(--border-subtle);
+          border-bottom: 1px solid var(--border);
           padding-bottom: 0.75rem;
           margin-bottom: 1rem;
           flex-wrap: wrap;
           gap: 0.5rem;
         }
         .stage-badge {
-          font-size: 0.65rem;
-          color: var(--text-highlight);
+          font-size: 0.68rem;
+          font-weight: 700;
+          color: var(--accent);
           letter-spacing: 0.1em;
           display: block;
           margin-bottom: 0.2rem;
         }
         .stage-heading {
           font-size: 1.15rem;
+          font-weight: 700;
           color: var(--text-primary);
         }
         .protocol-badge {
           display: flex;
           align-items: center;
           gap: 0.4rem;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           background: var(--bg-surface);
           padding: 4px 10px;
           border-radius: var(--radius-xs);
@@ -403,15 +385,16 @@ export default function BeyondTheStack() {
           }
         }
         .inspector-action-bar {
-          font-size: 0.75rem;
-          background: var(--terminal-header);
-          padding: 0.5rem 0.75rem;
+          font-size: 0.78rem;
+          background: var(--bg-surface);
+          border: 1px solid var(--border);
+          padding: 0.6rem 0.85rem;
           border-radius: var(--radius-xs);
           margin-bottom: 0.75rem;
           color: var(--text-primary);
         }
         .inspector-desc {
-          font-size: 0.88rem;
+          font-size: 0.9rem;
           color: var(--text-secondary);
           line-height: 1.6;
         }
@@ -423,10 +406,12 @@ export default function BeyondTheStack() {
         }
         .inspector-box-label {
           font-size: 0.68rem;
+          font-weight: 700;
           color: var(--text-muted);
           display: block;
           margin-bottom: 0.6rem;
           letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
         .tech-pills-row {
           display: flex;
@@ -437,16 +422,18 @@ export default function BeyondTheStack() {
           display: flex;
           flex-wrap: wrap;
           gap: 1.5rem;
-          font-size: 0.75rem;
+          font-size: 0.8rem;
           color: var(--text-secondary);
           padding-top: 1rem;
-          border-top: 1px solid var(--border-subtle);
+          border-top: 1px solid var(--border);
         }
         .pipe-foot-item {
           display: flex;
           align-items: center;
           gap: 0.4rem;
         }
+        .text-xs { font-size: 0.75rem; }
+        .text-muted { color: var(--text-muted); }
       `}</style>
     </section>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GraduationCap, Award, Calendar, CheckCircle } from 'lucide-react';
+import { GraduationCap, Award, Calendar, CheckCircle2 } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import { educationData } from '../data/educationData';
 
@@ -9,8 +9,7 @@ export default function Education() {
       <div className="container">
         <SectionHeader
           eyebrow="ACADEMIC BACKGROUND"
-          number="EDUCATION"
-          title="FORMATION & DIPLOMAS"
+          title="Education & Formation"
           subtitle="Rigorous foundations in digital software engineering, full-stack systems, and scientific reasoning."
         />
 
@@ -22,7 +21,7 @@ export default function Education() {
                   {idx === 0 ? <GraduationCap size={20} /> : <Award size={20} />}
                 </div>
                 <div className="edu-period font-mono">
-                  <Calendar size={12} className="text-highlight" />
+                  <Calendar size={13} className="text-accent" />
                   <span>{edu.period}</span>
                 </div>
               </div>
@@ -33,14 +32,14 @@ export default function Education() {
                 <h4 className="edu-field">{edu.field}</h4>
               </div>
 
-              <div className="edu-status-badge font-mono">
-                <CheckCircle size={12} className="text-highlight" />
+              <div className="edu-status-badge">
+                <CheckCircle2 size={13} className="text-accent" />
                 <span>{edu.status}</span>
               </div>
 
               <p className="edu-desc">{edu.description}</p>
 
-              <div className="edu-highlights font-mono">
+              <div className="edu-highlights">
                 {edu.highlights.map((h, hIdx) => (
                   <span key={hIdx} className="tech-badge">
                     {h}
@@ -71,16 +70,17 @@ export default function Education() {
         .edu-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
-          border-radius: var(--radius-sm);
+          border-radius: var(--radius-md);
           padding: 2rem;
           display: flex;
           flex-direction: column;
-          gap: 1rem;
-          transition: var(--transition-smooth);
+          gap: 1.1rem;
+          box-shadow: var(--shadow-sm);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .edu-card:hover {
-          border-color: var(--accent-light);
-          transform: translateY(-2px);
+          border-color: var(--accent);
+          transform: translateY(-3px);
           box-shadow: var(--shadow-md);
         }
         .edu-top {
@@ -92,29 +92,27 @@ export default function Education() {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 38px;
-          height: 38px;
-          border-radius: var(--radius-xs);
-          background: var(--bg-surface);
-          border: 1px solid var(--border);
-          color: var(--text-highlight);
-        }
-        .edu-card:hover .edu-icon-wrap {
-          background: var(--burgundy);
-          color: #F2E9E4;
+          width: 40px;
+          height: 40px;
+          border-radius: var(--radius-sm);
+          background: var(--badge-bg);
+          border: 1px solid var(--badge-border);
+          color: var(--accent);
         }
         .edu-period {
           display: flex;
           align-items: center;
-          gap: 0.35rem;
-          font-size: 0.75rem;
+          gap: 0.4rem;
+          font-size: 0.78rem;
           color: var(--text-muted);
+          font-weight: 600;
         }
         .edu-institution {
           font-size: 0.75rem;
-          color: var(--text-highlight);
-          letter-spacing: 0.1em;
+          color: var(--accent);
+          letter-spacing: 0.08em;
           text-transform: uppercase;
+          font-weight: 700;
         }
         .edu-degree {
           font-size: 1.35rem;
@@ -125,21 +123,23 @@ export default function Education() {
           font-size: 0.95rem;
           color: var(--text-secondary);
           font-weight: 500;
+          margin-top: 0.15rem;
         }
         .edu-status-badge {
           display: inline-flex;
           align-items: center;
-          gap: 0.4rem;
+          gap: 0.45rem;
           padding: 4px 10px;
-          background: var(--bg-surface);
-          border: 1px solid var(--border-accent);
+          background: var(--bg-secondary);
+          border: 1px solid var(--border);
           border-radius: var(--radius-xs);
-          font-size: 0.75rem;
+          font-size: 0.78rem;
+          font-weight: 600;
           color: var(--text-primary);
           width: fit-content;
         }
         .edu-desc {
-          font-size: 0.85rem;
+          font-size: 0.88rem;
           color: var(--text-secondary);
           line-height: 1.6;
           flex-grow: 1;
@@ -147,8 +147,8 @@ export default function Education() {
         .edu-highlights {
           display: flex;
           flex-wrap: wrap;
-          gap: 0.4rem;
-          padding-top: 0.75rem;
+          gap: 0.45rem;
+          padding-top: 0.85rem;
           border-top: 1px solid var(--border-subtle);
         }
       `}</style>

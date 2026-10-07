@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, FileDown, ArrowUpRight, Terminal } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Globe } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ onOpenCV }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const [currentLang, setCurrentLang] = useState('FR');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Track active section
-      const sections = ['work', 'about', 'experience', 'skills', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'project-showcase', 'experience', 'skills', 'education', 'contact'];
       const scrollPos = window.scrollY + 200;
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -36,24 +36,28 @@ export default function Navbar({ onOpenCV }) {
   }, []);
 
   const navLinks = [
-    { label: 'WORK', href: '#work', id: 'work' },
-    { label: 'ABOUT', href: '#about', id: 'about' },
-    { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
-    { label: 'SKILLS', href: '#skills', id: 'skills' },
-    { label: 'CONTACT', href: '#contact', id: 'contact' },
+    { label: 'Home', href: '#hero', id: 'hero' },
+    { label: 'About', href: '#about', id: 'about' },
+    { label: 'Projects', href: '#projects', id: 'projects' },
+    { label: 'Experience', href: '#experience', id: 'experience' },
+    { label: 'Skills', href: '#skills', id: 'skills' },
+    { label: 'Contact', href: '#contact', id: 'contact' },
   ];
+
+  const toggleLang = () => {
+    setCurrentLang(prev => (prev === 'FR' ? 'EN' : 'FR'));
+  };
 
   return (
     <>
       <header className={`navbar-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
-          {/* Brand */}
-          <a href="#" className="nav-brand" id="nav-brand-logo">
-            <span className="brand-symbol">SM</span>
-            <span className="brand-name">SALMA EL MOUNTASSIR</span>
+          {/* Brand Logo */}
+          <a href="#hero" className="nav-brand" id="nav-brand-logo">
+            <span className="brand-logo-text">SALMA</span>
           </a>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation Links */}
           <nav className="nav-desktop-links" aria-label="Main Navigation">
             {navLinks.map((link) => (
               <a
@@ -66,27 +70,29 @@ export default function Navbar({ onOpenCV }) {
             ))}
           </nav>
 
-          {/* Right Actions */}
+          {/* Right Action Controls: Theme & Language */}
           <div className="nav-actions">
-            <button
-              onClick={onOpenCV}
-              className="btn btn-secondary btn-sm nav-cv-btn"
-              id="navbar-cv-btn"
-            >
-              <FileDown size={14} />
-              <span>DOWNLOAD CV</span>
-            </button>
-
+            {/* Theme Toggle Pill */}
             <ThemeToggle />
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Language Selector Pill */}
+            <button
+              onClick={toggleLang}
+              className="lang-toggle-btn"
+              title="Toggle Language (FR / EN)"
+              aria-label="Toggle Language"
+            >
+              <span className="lang-text">{currentLang}</span>
+            </button>
+
+            {/* Mobile Hamburger Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="mobile-menu-btn"
               aria-label="Toggle navigation menu"
               id="mobile-menu-toggle"
             >
-              {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
@@ -96,8 +102,8 @@ export default function Navbar({ onOpenCV }) {
       <div className={`mobile-menu-drawer ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-content">
           <div className="mobile-menu-header">
-            <span className="brand-name">SALMA EL MOUNTASSIR</span>
-            <span className="mobile-eyebrow font-mono">JUNIOR FULL-STACK DEVELOPER</span>
+            <span className="brand-logo-text">SALMA</span>
+            <span className="mobile-role-text">Junior Full-Stack Developer</span>
           </div>
 
           <nav className="mobile-nav-links">
@@ -108,14 +114,19 @@ export default function Navbar({ onOpenCV }) {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`mobile-nav-link ${activeSection === link.id ? 'active' : ''}`}
               >
-                <span className="mobile-nav-num font-mono">0{navLinks.indexOf(link) + 1}</span>
-                <span className="mobile-nav-text">{link.label}</span>
+                <span>{link.label}</span>
                 <ArrowUpRight size={16} className="mobile-nav-arrow" />
               </a>
             ))}
           </nav>
 
           <div className="mobile-menu-footer">
+            <div className="mobile-controls-row">
+              <ThemeToggle />
+              <button onClick={toggleLang} className="lang-toggle-btn">
+                <span>{currentLang}</span>
+              </button>
+            </div>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
@@ -123,12 +134,8 @@ export default function Navbar({ onOpenCV }) {
               }}
               className="btn btn-primary w-full"
             >
-              <FileDown size={15} />
-              <span>DOWNLOAD CV</span>
+              <span>Download CV</span>
             </button>
-            <p className="mobile-footer-tag font-mono">
-              React · Django · Laravel · Node · Python · GLPI
-            </p>
           </div>
         </div>
       </div>
@@ -139,17 +146,17 @@ export default function Navbar({ onOpenCV }) {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 100;
+          z-index: 1000;
           height: 72px;
           display: flex;
           align-items: center;
-          transition: var(--transition-smooth);
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
           background: transparent;
         }
         .navbar-header.scrolled {
           background: var(--bg-glass);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
           border-bottom: 1px solid var(--border);
           box-shadow: var(--shadow-sm);
           height: 64px;
@@ -162,29 +169,15 @@ export default function Navbar({ onOpenCV }) {
         .nav-brand {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          font-family: var(--font-display);
-          font-weight: 700;
-          font-size: 0.95rem;
-          letter-spacing: 0.08em;
+          gap: 0.5rem;
           color: var(--text-primary);
         }
-        .brand-symbol {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 28px;
-          height: 28px;
-          background: var(--burgundy);
-          color: #F2E9E4;
+        .brand-logo-text {
           font-family: var(--font-display);
-          font-size: 0.75rem;
+          font-size: 1.35rem;
           font-weight: 800;
-          border-radius: var(--radius-xs);
-          border: 1px solid var(--accent);
-        }
-        .brand-name {
-          letter-spacing: 0.06em;
+          letter-spacing: -0.03em;
+          color: var(--text-primary);
         }
         .nav-desktop-links {
           display: none;
@@ -197,57 +190,54 @@ export default function Navbar({ onOpenCV }) {
           }
         }
         .nav-link {
-          font-family: var(--font-mono);
-          font-size: 0.78rem;
-          letter-spacing: 0.12em;
+          font-size: 0.92rem;
+          font-weight: 500;
           color: var(--text-secondary);
           position: relative;
-          padding: 4px 0;
+          padding: 6px 0;
           transition: var(--transition-fast);
         }
         .nav-link:hover {
           color: var(--text-primary);
         }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background: var(--accent);
-          transition: width 0.3s ease;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-          width: 100%;
-        }
         .nav-link.active {
-          color: var(--text-primary);
+          color: var(--accent);
           font-weight: 600;
         }
         .nav-actions {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
+          gap: 0.85rem;
         }
-        .nav-cv-btn {
-          display: none;
+        .lang-toggle-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 4px 10px;
+          border-radius: var(--radius-pill);
+          background: var(--bg-surface);
+          border: 1px solid var(--border-strong);
+          color: var(--text-primary);
+          font-size: 0.78rem;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+          cursor: pointer;
+          transition: var(--transition-fast);
         }
-        @media (min-width: 640px) {
-          .nav-cv-btn {
-            display: inline-flex;
-          }
+        .lang-toggle-btn:hover {
+          border-color: var(--accent);
+          color: var(--accent);
         }
         .mobile-menu-btn {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 6px;
+          padding: 8px;
           color: var(--text-primary);
-          background: var(--bg-card);
+          background: var(--bg-surface);
           border: 1px solid var(--border);
-          border-radius: var(--radius-xs);
+          border-radius: var(--radius-sm);
+          cursor: pointer;
         }
         @media (min-width: 860px) {
           .mobile-menu-btn {
@@ -261,12 +251,12 @@ export default function Navbar({ onOpenCV }) {
           right: 0;
           bottom: 0;
           background: var(--bg-primary);
-          z-index: 99;
+          z-index: 999;
           transform: translateY(-100%);
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
           display: flex;
           flex-direction: column;
-          padding-top: 80px;
+          padding-top: 72px;
         }
         .mobile-menu-drawer.open {
           transform: translateY(0);
@@ -280,41 +270,35 @@ export default function Navbar({ onOpenCV }) {
         }
         .mobile-menu-header {
           border-bottom: 1px solid var(--border);
-          padding-bottom: 1.5rem;
+          padding-bottom: 1.25rem;
         }
-        .mobile-eyebrow {
+        .mobile-role-text {
           display: block;
-          font-size: 0.72rem;
-          color: var(--text-highlight);
-          margin-top: 0.35rem;
-          letter-spacing: 0.1em;
+          font-size: 0.82rem;
+          color: var(--text-secondary);
+          margin-top: 0.25rem;
         }
         .mobile-nav-links {
           display: flex;
           flex-direction: column;
-          gap: 1.25rem;
-          margin: 2rem 0;
+          gap: 1rem;
+          margin: 1.5rem 0;
         }
         .mobile-nav-link {
           display: flex;
           align-items: center;
-          gap: 1rem;
-          font-family: var(--font-display);
-          font-size: 1.5rem;
+          justify-content: space-between;
+          font-size: 1.25rem;
+          font-weight: 600;
           color: var(--text-secondary);
-          padding: 0.5rem 0;
+          padding: 0.6rem 0;
           border-bottom: 1px solid var(--border-subtle);
         }
         .mobile-nav-link.active,
         .mobile-nav-link:hover {
-          color: var(--text-primary);
-        }
-        .mobile-nav-num {
-          font-size: 0.8rem;
-          color: var(--text-highlight);
+          color: var(--accent);
         }
         .mobile-nav-arrow {
-          margin-left: auto;
           color: var(--text-muted);
         }
         .mobile-menu-footer {
@@ -324,13 +308,13 @@ export default function Navbar({ onOpenCV }) {
           padding-top: 1.5rem;
           border-top: 1px solid var(--border);
         }
+        .mobile-controls-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
         .w-full {
           width: 100%;
-        }
-        .mobile-footer-tag {
-          font-size: 0.7rem;
-          text-align: center;
-          color: var(--text-muted);
         }
       `}</style>
     </>
